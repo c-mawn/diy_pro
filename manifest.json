@@ -5,6 +5,6 @@
   "manifest_version": 3,
   "action": {
     "default_popup": "diy_pro.html",
-    "default_icon": "diy_pro_logo.png"
+    "default_icon": "images/diy_pro_logo.png"
   }
 }
