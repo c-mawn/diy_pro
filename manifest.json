@@ -1,0 +1,10 @@
+{
+  "name": "DIY Pro Extension",
+  "description": "Base Level Extension",
+  "version": "1.0",
+  "manifest_version": 3,
+  "action": {
+    "default_popup": "diy_pro.html",
+    "default_icon": "diy_pro_logo.png"
+  }
+}
