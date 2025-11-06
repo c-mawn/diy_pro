@@ -4,7 +4,7 @@
 
 # Running The Extension:
 - Download this repo to your local device
-- Open your chrome extensions tab (chrome://extensions)[chrome://extensions] (you might need to type this into a tab yourself, as chrome:// is usually not linkable
+- Open your chrome extensions tab (chrome://extensions)[chrome://extensions] (you might need to type this into a tab yourself, as chrome:// is usually not linkable)
 - Turn on developer mode
 - Click 'load unpacked'
 - Select the this downloaded directory to load
