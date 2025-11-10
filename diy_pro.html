@@ -2,12 +2,45 @@
   <body>
     <h1>DIY Pro Extension</h1>
 
+    <!-- Make sure that all buttons have an aria label (for screen readers) -->
     <div id="controls">
-      <button id="image-search" type="button" aria-label="Image Search">One</button>
-      <button id="log-in" type="button" aria-label="Login">Two</button>
-      <button id="search-usr" type="button" aria-label="Search Users">Three</button>
+      <button id="image-search" type="button" aria-label="Image Search">Image Search</button>
+      <button id="log-in" type="button" aria-label="Login">Login</button>
+      <button id="search-usr" type="button" aria-label="Search Users">Search Users</button>
     </div>
 
-    <script src="scripts/hello.js"></script>
+    <style>
+      #controls { display:flex; gap:12px; flex-direction:column; }
+      /*style stuff for buttons*/
+      #controls button{
+      background:#f3f4f6;
+      border:4px solid #3AB0FF;
+      padding:10px 14px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+      transition:transform .08s ease, box-shadow .12s ease, background .12s ease;
+      white-space: nowrap;
+      width: 180px;
+      }
+      h1{
+        text-align: center;
+        /* white-space: nowrap; */
+      }
+      body{
+        padding: 16px;
+        box-sizing: border-box;
+        width: 210px;
+      }
+      #controls button:hover { transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,.06); }
+      #controls button:active { transform:translateY(0); }
+      #controls button:focus { outline:3px solid rgba(59,130,246,.2); }
+      #controls button[data-state="on"] { background:#0ea5e9; color:#fff; border-color:#0891b2; }
+      /* small toast for feedback */
+      .toast{ position:fixed; right:16px; bottom:16px; background:#111; color:#fff; padding:8px 12px; border-radius:8px; opacity:0; transform:translateY(8px); transition:opacity .18s, transform .18s; pointer-events:none; }
+      .toast.show{ opacity:1; transform:translateY(0); pointer-events:auto; }
+    </style>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
   </body>
 </html>
