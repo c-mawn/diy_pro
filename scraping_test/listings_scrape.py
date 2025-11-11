@@ -1,10 +1,13 @@
 # pip install httpx[http2] parsel nested_lookup
 # code adapted from tutorial here: https://scrapfly.io/blog/posts/how-to-scrape-ebay
 
+import csv
 import httpx
 import json
 import httpx
 from parsel import Selector
+
+listing_url = "https://www.ebay.com/itm/283678477600"
 
 # establish our HTTP2 client with browser-like headers
 session = httpx.Client(
@@ -76,8 +79,28 @@ def parse_product(response: httpx.Response) -> dict:
     return item
 
 
-response = session.get("https://www.ebay.com/itm/283678477600")
+response = session.get(listing_url)
 product_data = parse_product(response)
 
 # print the results in JSON format
 print(json.dumps(product_data, indent=2))
+
+# making a csv file
+with open("test1.csv", "w", newline="") as file:
+    writer = csv.writer(file)
+    field = ["name", "price_original", "photo", "features", "url"]
+
+    writer.writerow(field)
+    writer.writerow(
+        [
+            product_data["name"],
+            product_data["price_original"],
+            product_data["photos"][0],
+            product_data["features"]["Brand"],
+            product_data["url"],
+        ]
+    )
+
+
+# "https://www.ebay.com/sch/i.html?_nkw=" +"search+item" is url
+# div.su-card-container__content
