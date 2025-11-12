@@ -22,6 +22,7 @@
       flex-wrap: wrap;
       gap: 30px;
       justify-content: center;
+      align-items: flex-start; /* important: prevent row height stretch */
     }
 
     .tool-card {
@@ -32,17 +33,21 @@
       width: calc(25% - 30px);
       text-align: center;
       box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      overflow: hidden;
+      position: relative;
+      /* remove any fixed height */
     }
 
     .tool-card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
 
     .tool-card img {
       max-height: 150px;
-      margin-top: 15px;
+      margin-top: 10px;
+      margin-bottom: 5px;
       border-radius: 8px;
     }
 
@@ -50,6 +55,23 @@
       font-weight: bold;
       color: #007BFF;
       font-size: 1.3em;
+    }
+
+    /* Description initially hidden */
+    .tool-description {
+      color: #333;
+      font-size: 1em;
+      margin-top: 10px;
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, opacity 0.5s ease;
+    }
+
+    /* Reveal description on hover */
+    .tool-card:hover .tool-description {
+      max-height: 500px; /* enough for longer text */
+      opacity: 1;
     }
 
     .no-image {
@@ -88,6 +110,7 @@
       {% else %}
         <div class="no-image">(no image)</div>
       {% endif %}
+      <div class="tool-description">{{ tool.Description }}</div>
     </div>
     {% endfor %}
   </div>
