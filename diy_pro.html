@@ -1,6 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
 <html>
   <body>
     <h1 id="h1-title">DIY Pro Extension</h1>
+
+    <p id="subtitle-text">Use Image Search to take a screenshot and find similar parts and tools.</p>
 
     <div id="controls">
       <button id="image-search" type="button" aria-label="Image Search">Image Search</button>
@@ -14,6 +18,13 @@
         text-align: center;
         white-space: nowrap;
       }
+      /* --- Body Text style --- */
+      #subtitle-text {
+        text-align: center;
+        color: #6b7280; 
+        margin-top: -8px; 
+        margin-bottom: 16px;
+      }
       /* --- Body Padding --- */
       body {
         padding: 16px;
@@ -24,6 +35,7 @@
         display:flex; 
         gap:12px; 
         flex-direction: column; /* Stacks vertically */
+        align-items: center;
       }
       /* --- Button Styling --- */
       #controls button{
@@ -34,9 +46,9 @@
         cursor:pointer;
         font-weight:600;
         transition:transform .08s ease, box-shadow .12s ease, background .12s ease;
-        white-space: nowrap; /* Keeps text on one line */
-        width: 180px; /* Manually set width */
-        box-sizing: border-box; /* Includes padding in width */
+        white-space: nowrap;
+        width: 180px;
+        box-sizing: border-box;
       }
       #controls button:hover { transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,.06); }
       #controls button:active { transform:translateY(0); }
