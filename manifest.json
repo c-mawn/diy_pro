@@ -3,8 +3,16 @@
   "description": "Base Level Extension",
   "version": "1.0",
   "manifest_version": 3,
+  "permissions":[
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
   "action": {
     "default_popup": "diy_pro.html",
     "default_icon": "images/diy_pro_logo.png"
+  },
+  "background": {
+    "service_worker": "scripts/background.js"
   }
 }
