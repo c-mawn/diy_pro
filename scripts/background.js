@@ -49,10 +49,11 @@ async function cropImage(fullImageUrl, rect) {
     reader.onloadend = () => resolve(reader.result);
     reader.readAsDataURL(croppedBlob);
   });
-
-  // 7. Save the image
+  // 7. Save image to storage
   chrome.storage.local.set({ lastImage: croppedDataUrl }, () => {
     console.log('Image saved to chrome.storage.local');
-    // You could also show a notification here
+
+    // --- 8. Open your local website in a new tab ---
+    chrome.tabs.create({ url: "http://127.0.0.1:8000" });
   });
 }
