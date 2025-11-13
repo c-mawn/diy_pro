@@ -2,6 +2,8 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Find the image search button
   const imageSearchButton = document.getElementById('image-search');
+  const loginButton = document.getElementById("log-in");
+  const searchUsersButton = document.getElementById("search-usr");
 
   if (imageSearchButton) {
     // Listen for a click
@@ -23,5 +25,19 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     };
+  }
+
+  if(loginButton){
+    loginButton.onclick = () => {
+      // Send user to website for login
+      console.log("login button pressed");
+    }
+  }
+
+  if(searchUsersButton){
+    searchUsersButton.onclick = () => {
+      // Send user to website for searching users
+      console.log("search users button pressed");
+    }
   }
 });
