@@ -1,0 +1,143 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Expert Repairer Sign Up</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+  <style>
+    form { max-width: 600px; margin: 0 auto; background: #fff; padding: 30px; border: 2px solid #cce5ff; border-radius: 12px; box-shadow: 0 3px 8px rgba(0,0,0,0.1); display: flex; flex-direction: column; gap: 20px; }
+    input, textarea, select, .choices__inner { padding: 10px; border: 2px solid #cce5ff; border-radius: 8px; font-size: 1em; font-family: Arial, sans-serif; outline: none; transition: border-color 0.2s ease; width: 100%; box-sizing: border-box; }
+    input:focus, textarea:focus, select:focus, .choices__inner:focus { border-color: #007BFF; }
+    input::placeholder, textarea::placeholder { font-family: Arial, sans-serif; font-size: 1em; font-weight: normal; color: #888; }
+    button { padding: 12px; background: #007BFF; color: #fff; border: none; border-radius: 8px; font-weight: 600; cursor: pointer; transition: background 0.2s ease, transform 0.1s ease; }
+    button:hover { background: #0056b3; transform: translateY(-2px); }
+    button:active { transform: translateY(0); }
+    h1 { text-align: center; color: #007BFF; margin-bottom: 20px; }
+    p { text-align: center; margin-top: 10px; }
+    p a { color: #007BFF; text-decoration: none; font-weight: bold; }
+    p a:hover { text-decoration: underline; }
+    .error { color: red; text-align: left; font-size: 0.9em; margin-top: 4px; margin-bottom: 0; }
+    label { font-weight: bold; color: #007BFF; }
+    .choices { margin-bottom: 0 !important; }
+    .choices__inner { min-height: 42px; padding: 4px 10px; background-color: #fff; margin-bottom: 0 !important; }
+    .choices__list--multiple { display: none; }
+    .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .tag-pill { background-color: #cce5ff; color: #003366; padding: 5px 10px; border-radius: 16px; font-size: 0.9em; display: flex; align-items: center; gap: 6px; }
+    .tag-pill button { background: transparent; border: none; color: #003366; font-weight: bold; cursor: pointer; font-size: 1em; padding: 0; line-height: 1; }
+    .tag-pill button:hover { color: #ff3333; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <h1>Expert Repairer Sign Up</h1>
+
+  <form method="POST">
+    {% csrf_token %}
+
+    <label for="username">Username</label>
+    <input id="username" name="username" placeholder="Choose a username"
+           value="{{ form.username.value|default_if_none:'' }}">
+    {% if form.username.errors %}
+      {% for error in form.username.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <label for="password">Password</label>
+    <input id="password" name="password" type="password" placeholder="Choose a password">
+    {% if form.password.errors %}
+      {% for error in form.password.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <label for="display_name">Display Name</label>
+    <input id="display_name" name="display_name" placeholder="Enter your display name"
+           value="{{ form.display_name.value|default_if_none:'' }}">
+    {% if form.display_name.errors %}
+      {% for error in form.display_name.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+    
+    <label for="contact_info">Contact Info (public)</label>
+    <textarea id="contact_info" name="contact_info" rows="3"
+              placeholder="How can people reach you?">{{ form.contact_info.value|default_if_none:'' }}</textarea>
+    {% if form.contact_info.errors %}
+      {% for error in form.contact_info.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <label for="bio">Bio</label>
+    <textarea id="bio" name="bio" rows="5"
+              placeholder="Tell others about yourself...">{{ form.bio.value|default_if_none:'' }}</textarea>
+    {% if form.bio.errors %}
+      {% for error in form.bio.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <label for="tags">Repairs / Skills Tags</label>
+    <select id="tags" name="tags" multiple>
+      {% for tag in tags %}
+        <option value="{{ tag.id }}" {% if tag.id|stringformat:"s" in form.tags.value %}selected{% endif %}>
+          {{ tag.name }}
+        </option>
+      {% endfor %}
+    </select>
+    <div class="tags-container" id="tags-container"></div>
+    {% if form.tags.errors %}
+      {% for error in form.tags.errors %}
+        <p class="error">{{ error }}</p>
+      {% endfor %}
+    {% endif %}
+
+    <button type="submit">Sign Up</button>
+  </form>
+
+  <p>Already have an account? <a href="{% url 'login' %}">Log in here</a>.</p>
+
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tagsSelect = document.getElementById('tags');
+      const tagsContainer = document.getElementById('tags-container');
+
+      const choices = new Choices(tagsSelect, {
+        removeItemButton: true,
+        searchEnabled: true,
+        placeholder: true,
+        placeholderValue: 'Select your skills...',
+        shouldSort: false,
+        maxItemCount: 50
+      });
+
+      function renderPills() {
+        tagsContainer.innerHTML = '';
+        Array.from(tagsSelect.selectedOptions).forEach(option => {
+          const pill = document.createElement('div');
+          pill.className = 'tag-pill';
+          pill.textContent = option.text;
+
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.textContent = '×';
+          removeBtn.addEventListener('click', () => {
+            option.selected = false;
+            choices.removeActiveItemsByValue(option.value);
+            renderPills();
+          });
+
+          pill.appendChild(removeBtn);
+          tagsContainer.appendChild(pill);
+        });
+      }
+
+      tagsSelect.addEventListener('change', renderPills);
+      renderPills();
+    });
+  </script>
+</body>
+</html>
