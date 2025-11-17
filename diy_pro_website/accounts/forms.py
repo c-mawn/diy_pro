@@ -23,3 +23,10 @@ class ExpertSignupForm(forms.ModelForm):
         if password and len(password) < 6:
             raise forms.ValidationError("Password must be at least 6 characters long.")
         return password
+
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ["display_name", "contact_info", "bio", "tags"]
+        widgets = {"tags": forms.CheckboxSelectMultiple}

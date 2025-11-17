@@ -130,7 +130,13 @@
     <div class="profile-header">
       <h1>{{ profile.display_name|default:"Unnamed User" }}</h1>
       {% if request.user.is_authenticated and request.user == profile.user %}
-        <a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+        <div style="display: flex; gap: 10px;">
+          <a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+          <form method="POST" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="edit-btn" style="background-color:#dc3545; border:none;">Sign Out</button>
+          </form>
+        </div>
       {% endif %}
     </div>
 

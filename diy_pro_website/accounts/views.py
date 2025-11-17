@@ -2,7 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
-from .forms import ExpertSignupForm
+from .forms import ExpertSignupForm, EditProfileForm
 from .models import Tag, Profile
 
 
@@ -30,6 +30,9 @@ def signup(request):
 
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect("profile", user_id=request.user.id)
+
     error = None
     if request.method == "POST":
         username = request.POST.get("username")
@@ -48,14 +51,14 @@ def edit_profile(request):
     profile = get_object_or_404(Profile, user=request.user)
 
     if request.method == "POST":
-        form = ExpertSignupForm(request.POST, instance=profile)
+        form = EditProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
             return redirect("profile", user_id=request.user.id)
         else:
             print("Form errors:", form.errors)
     else:
-        form = ExpertSignupForm(instance=profile)
+        form = EditProfileForm(instance=profile)
 
     tags = Tag.objects.all()
     return render(request, "edit_profile.html", {"form": form, "tags": tags})
