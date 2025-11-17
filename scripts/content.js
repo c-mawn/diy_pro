@@ -22,7 +22,7 @@ if (window.diyProOverlayActive) {
   const selectionBox = document.createElement('div');
   selectionBox.id = 'diy-pro-selection';
   Object.assign(selectionBox.style, {
-    position: 'absolute',
+    position: 'fixed',
     border: '2px dashed #3AB0FF',
     backgroundColor: 'rgba(58, 176, 255, 0.2)',
     zIndex: '9999999',
