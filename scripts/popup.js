@@ -24,4 +24,11 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     };
   }
+  const loginButton = document.getElementById('log-in');
+  if (loginButton) {
+    loginButton.onclick = () => {
+      // Open login.html in a new tab
+      chrome.tabs.create({ url: "http://127.0.0.1:8000/accounts/login" });
+    };
+  }
 });
