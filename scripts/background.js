@@ -54,6 +54,6 @@ async function cropImage(fullImageUrl, rect) {
     console.log('Image saved to chrome.storage.local');
 
     // --- 8. Open your local website in a new tab ---
-    chrome.tabs.create({ url: "http://127.0.0.1:8000" });
+    chrome.tabs.create({ url: "http://127.0.0.1:8000/tools/closest_matches" });
   });
 }
