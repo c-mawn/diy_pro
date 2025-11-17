@@ -7,9 +7,18 @@
     <p id="subtitle-text">Use Image Search to take a screenshot and find similar parts and tools.</p>
 
     <div id="controls">
-      <button id="image-search" type="button" aria-label="Image Search">Image Search</button>
-      <button id="log-in" type="button" aria-label="Login">Login</button>
-      <button id="search-usr" type="button" aria-label="Search Users">Search Users</button>
+      <button id="image-search" type="button" aria-label="Image Search">
+        <img src="images/search-icon.png" alt="">
+        <span>Image Search</span>
+      </button>
+      <button id="log-in" type="button" aria-label="Login">
+        <img src="images/login-icon.png" alt="">
+        <span>Login</span>
+      </button>
+      <button id="search-usr" type="button" aria-label="Search Users">
+        <img src="images/users-icon.png" alt="">
+        <span>Search Users</span>
+      </button>
     </div>
 
     <style>
@@ -49,11 +58,19 @@
         white-space: nowrap;
         width: 180px;
         box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px; /* Adds space between icon and text */
       }
       #controls button:hover { transform:translateY(-2px); box-shadow:0 6px 12px rgba(0,0,0,.06); }
       #controls button:active { transform:translateY(0); }
       #controls button:focus { outline:3px solid rgba(59,130,246,.2); }
       #controls button[data-state="on"] { background:#0ea5e9; color:#fff; border-color:#0891b2; }
+      #controls button img {
+        width: 16px;
+        height: 16px;
+      }
       
       /* --- Toast Notification --- */
       .toast{ position:fixed; right:16px; bottom:16px; background:#111; color:#fff; padding:8px 12px; border-radius:8px; opacity:0; transform:translateY(8px); transition:opacity .18s, transform .18s; pointer-events:none; }
