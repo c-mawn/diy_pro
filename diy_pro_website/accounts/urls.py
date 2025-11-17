@@ -12,4 +12,5 @@ urlpatterns = [
         auth_views.LogoutView.as_view(next_page="/accounts/login/"),
         name="logout",
     ),
+    path("delete_account/", views.delete_account, name="delete_account"),
 ]

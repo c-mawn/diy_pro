@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.models import User
-from django.contrib.auth import login, authenticate
+from django.contrib.auth import login, logout, authenticate
 from .forms import ExpertSignupForm, EditProfileForm
 from .models import Tag, Profile
 
@@ -62,6 +62,14 @@ def edit_profile(request):
 
     tags = Tag.objects.all()
     return render(request, "edit_profile.html", {"form": form, "tags": tags})
+
+
+@login_required
+def delete_account(request):
+    user = request.user
+    logout(request)
+    user.delete()
+    return redirect("login")
 
 
 def profile(request, user_id):

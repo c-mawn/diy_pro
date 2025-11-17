@@ -132,13 +132,22 @@
       {% if request.user.is_authenticated and request.user == profile.user %}
         <div style="display: flex; gap: 10px;">
           <a href="{% url 'edit_profile' %}" class="edit-btn">Edit Profile</a>
+
+          <!-- Sign Out button in blue -->
           <form method="POST" action="{% url 'logout' %}" style="display:inline;">
             {% csrf_token %}
-            <button type="submit" class="edit-btn" style="background-color:#dc3545; border:none;">Sign Out</button>
+            <button type="submit" class="edit-btn" style="background-color:#007BFF; border:none;">Sign Out</button>
+          </form>
+
+          <!-- Delete Account button in red with confirmation popup -->
+          <form method="POST" action="{% url 'delete_account' %}" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete your account? This action cannot be undone.');">
+            {% csrf_token %}
+            <button type="submit" class="edit-btn" style="background-color:#dc3545; border:none;">Delete Account</button>
           </form>
         </div>
       {% endif %}
     </div>
+
 
     <!-- Contact Info -->
     <div class="section">
