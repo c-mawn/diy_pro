@@ -11,6 +11,11 @@
 - Select the this downloaded directory to load
 - Open the extension by opening your extensions menu, and selecting the DIY Pro extension
 
+# Getting Scraping Token Access
+- Create an account with Scrape.do
+- After following instructions with signing up and logging in, you can get the API key on the scraping website home screen. Follow this for further instructions: https://scrape.do/documentation/
+- After getting the token, in terminal run `export TOKEN=` and then your token to set up token access
+
 # Running The Website
 - Run `pip install django` to install the django web framework
 - After installing, `cd` into the `diy_pro_website` directory
@@ -28,6 +33,6 @@
 Currently our prototype has the image search hardcoded. There is no AI analyzing the image and the image search results are fixed two five hard coded tools. The users in our database are also hardcoded. They are not real users and are randomly generated. Our tool tags for the users are also hardcoded too. Aside from those two, everything has been programmed to be functional. Our purchase tools page uses a script to scrape eBay for tools and our signup for users registers new users to our database. 
 
 ## Other Limitations
-Some limitations are that the current second iteration is still in progress and has some limited functionality due to the updated changes from the feedback. Our database for our complex task is also hard-coded/ignored as scaling questions are not addressed in the medium fidelity prototype.
+Some limitations are that the current second iteration is still in progress and has some limited functionality due to the updated changes from the feedback. Our database for our complex task is also hard-coded/ignored as scaling questions are not addressed in the medium fidelity prototype. Another big limitation is there is a bottleneck for webscraping due to needing to go through a third party to scrape eBay and as a result getting purchase results can take a while.
 
 
