@@ -1,0 +1,215 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Search Users</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css">
+  <style>
+    /* Unified search + filter row */
+    .search-filter-row {
+      display: flex;
+      gap: 12px;
+      max-width: 900px;
+      margin: 0 auto 20px auto;
+    }
+
+    /* Shorter name input */
+    .search-filter-row input[type="text"] {
+      flex: 1.5; /* slightly shorter */
+      padding: 10px;
+      border: 2px solid #cce5ff;
+      border-radius: 8px;
+      font-size: 1em;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+
+    .search-filter-row input:focus {
+      border-color: #007BFF;
+    }
+
+    .filter-button-wrapper {
+      display: flex;
+      flex: 2; /* slightly longer filter area */
+      gap: 8px;
+      align-items: stretch; /* make button same height as select */
+    }
+
+    .choices-wrapper {
+      flex: 1;
+    }
+
+    .choices-wrapper .choices__inner {
+      display: flex;
+      align-items: center; /* vertically center placeholder and items */
+      min-height: 42px;
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 2px solid #cce5ff;
+      background-color: #fff;
+      box-sizing: border-box;
+    }
+
+    .search-filter-row button {
+      flex: 0 0 auto;
+      min-width: 80px;
+      padding: 8px 16px;
+      background: #007BFF;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.9em;
+      transition: background 0.2s ease;
+    }
+
+    .search-filter-row button:hover {
+      background: #0056b3;
+    }
+
+    /* Choices.js styling */
+    .choices { margin-bottom: 0 !important; }
+    .choices__list--multiple { display: none; }
+
+    .tags-container { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; max-width: 900px; margin-left: auto; margin-right: auto; }
+    .tag-pill { background-color: #cce5ff; color: #003366; padding: 5px 10px; border-radius: 16px; font-size: 0.9em; display: flex; align-items: center; gap: 6px; }
+    .tag-pill button { background: transparent; border: none; color: #003366; font-weight: bold; cursor: pointer; font-size: 1em; padding: 0; line-height: 1; }
+    .tag-pill button:hover { color: #ff3333; text-decoration: none; }
+
+    .user-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      max-width: 900px;
+      margin: 40px auto 0 auto;
+    }
+
+    .user-card {
+      position: relative;
+      padding: 25px;
+      border-radius: 12px;
+      background: #fff url("{% static 'images/user-icon.svg' %}") no-repeat 15px center;
+      background-size: 40px;
+      border: 2px solid #cce5ff;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      font-size: 1.2em;
+    }
+
+    .user-card a {
+      font-weight: bold;
+      color: #007BFF;
+      text-decoration: none;
+      margin-left: 60px;
+      display: inline-block;
+      font-size: 1.4em;
+    }
+
+    .user-card a:hover {
+      text-decoration: underline;
+    }
+
+    .user-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-left: 60px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Users</h1>
+
+  <form method="get">
+    <div class="search-filter-row">
+    <!-- Name search -->
+    <input type="text" name="q" placeholder="Search by name" value="{{ query|default_if_none:'' }}" style="flex: 2;">
+
+    <!-- Filter + Search button -->
+    <div class="filter-button-wrapper" style="flex: 1.5; gap: 8px;">
+        <div class="choices-wrapper" style="flex: 1;">
+        <select id="tags" name="tags" multiple>
+            {% for tag in tags %}
+            <option value="{{ tag.id }}" {% if tag.id|stringformat:"s" in selected_tags %}selected{% endif %}>
+                {{ tag.name }}
+            </option>
+            {% endfor %}
+        </select>
+        </div>
+        <button type="submit">Search</button>
+    </div>
+    </div>
+
+    </div>
+
+    <div id="tags-container" class="tags-container"></div>
+  </form>
+
+  <div class="user-list">
+    {% if profiles %}
+      {% for p in profiles %}
+        <div class="user-card">
+          <a href="{% url 'profile' p.user.id %}" target="_blank">{{ p.display_name }}</a>
+          {% if p.tags.all %}
+            <div class="user-tags">
+              {% for tag in p.tags.all %}
+                <div class="tag-pill">{{ tag.name }}</div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <p style="text-align:center;">No users found.</p>
+    {% endif %}
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const tagsSelect = document.getElementById('tags');
+      const tagsContainer = document.getElementById('tags-container');
+
+      const choices = new Choices(tagsSelect, {
+        removeItemButton: true,
+        searchEnabled: true,
+        placeholder: true,
+        placeholderValue: 'Select your skills...',
+        shouldSort: false,
+        maxItemCount: 50
+      });
+
+      Array.from(tagsSelect.options).forEach(option => {
+        if(option.selected) choices.setChoiceByValue(option.value);
+      });
+
+      function renderPills() {
+        tagsContainer.innerHTML = '';
+        Array.from(tagsSelect.selectedOptions).forEach(option => {
+          const pill = document.createElement('div');
+          pill.className = 'tag-pill';
+          pill.textContent = option.text;
+
+          const removeBtn = document.createElement('button');
+          removeBtn.type = 'button';
+          removeBtn.textContent = '×';
+          removeBtn.addEventListener('click', () => {
+            option.selected = false;
+            choices.removeActiveItemsByValue(option.value);
+            renderPills();
+          });
+
+          pill.appendChild(removeBtn);
+          tagsContainer.appendChild(pill);
+        });
+      }
+
+      tagsSelect.addEventListener('change', renderPills);
+      renderPills();
+    });
+  </script>
+</body>
+</html>

@@ -17,8 +17,17 @@ class Command(BaseCommand):
             "Battery Replacement",
             "Screen Replacement",
             "Electrical",
+            "Fast Repair Tools",
+            "Precision Tools",
+            "iPhone Repair",
+            "Screwdriver Tools",
+            "Replacement Parts",
+            "Ratcheting Tools",
+            "Flat Head Screwdriver",
+            "Phillips Head Screwdriver",
+            "Single Tip Screwdriver",
+            "Replaceable Tip Screwdriver",
         ]
-
         created_count = 0
         for tag_name in tags:
             tag, created = Tag.objects.get_or_create(name=tag_name)

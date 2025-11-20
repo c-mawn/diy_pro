@@ -13,4 +13,5 @@ urlpatterns = [
         name="logout",
     ),
     path("delete_account/", views.delete_account, name="delete_account"),
+    path("search_users/", views.search_users, name="search_users"),
 ]

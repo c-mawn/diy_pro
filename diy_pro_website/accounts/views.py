@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from .forms import ExpertSignupForm, EditProfileForm
 from .models import Tag, Profile
+from django.db.models import Count, Q
 
 
 def signup(request):
@@ -31,7 +32,13 @@ def signup(request):
 
 def login_view(request):
     if request.user.is_authenticated:
-        return redirect("profile", user_id=request.user.id)
+        try:
+            User.objects.get(id=request.user.id)
+            # User exists, send to profile
+            return redirect("profile", user_id=request.user.id)
+        except User.DoesNotExist:
+            logout(request)
+            return redirect("login")
 
     error = None
     if request.method == "POST":
@@ -75,3 +82,39 @@ def delete_account(request):
 def profile(request, user_id):
     profile = Profile.objects.get(user__id=user_id)
     return render(request, "profile.html", {"profile": profile})
+
+
+def search_users(request):
+    query = request.GET.get("q", "")
+    tag_ids = request.GET.getlist("tags")  # list of selected tag IDs as strings
+
+    profiles = Profile.objects.all()
+
+    # Name search
+    if query:
+        profiles = profiles.filter(
+            Q(user__username__icontains=query) | Q(display_name__icontains=query)
+        )
+
+    # Require all selected tags
+    if tag_ids:
+        # convert to ints
+        tag_ids_int = list(map(int, tag_ids))
+        profiles = (
+            profiles.filter(tags__in=tag_ids_int)
+            .annotate(num_tags=Count("tags"))
+            .filter(num_tags__gte=len(tag_ids_int))
+        )
+
+    tags = Tag.objects.all()
+
+    return render(
+        request,
+        "search_users.html",
+        {
+            "profiles": profiles,
+            "tags": tags,
+            "query": query,
+            "selected_tags": list(map(str, tag_ids)),  # keep as strings for template
+        },
+    )
