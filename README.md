@@ -23,6 +23,9 @@
 - With the local server running, all buttons on the extension will correctly redirect to our website. If this isn't running, redirects to the website will show errors.
 - Once finished, use `ctrl + c` to close the local server. Note: this is needs to be running 
 
+# Contextual Framing
+Imagine that you have just dropped your iPhone on the ground. The screen shatters, and you try to turn it on. Over and over, the screen flashes on, then after a moment, it turns back off. You don't have the money to buy a new phone right now, so you are determined to fix it yourself. You know that there are tons of videos on YouTube that can guide you through the process of fixing a broken screen, so you go to your computer and start searching. You come across a video that shows the person removing the phone screen, detaching it from the motherboard, and replacing the screen. You see the person use what looks like a tiny, unique screwdriver to remove a piece, but you have no idea where to buy the screwdriver. You haven’t seen this kind of screwdriver before, so you don't even know how to search for this exact screwdriver! So, you open the DIY Pro web extension to solve your problem.
+
 # Tasks
 - **Simple**: Image search. Use the DIY Pro extension to screenshot an image, search, and view closest matches.
 - **Medium**: View purchasing options. After selecting the closest match, a list of tool purchase options will pop up with links too eBay pages. A list of expert repairers with skill sets around the tool also pops up with links to their profiles.
@@ -34,5 +37,9 @@ Currently our prototype has the image search hardcoded. There is no AI analyzing
 
 ## Other Limitations
 Some limitations are that the current second iteration is still in progress and has some limited functionality due to the updated changes from the feedback. Our database for our complex task is also hard-coded/ignored as scaling questions are not addressed in the medium fidelity prototype. Another big limitation is there is a bottleneck for webscraping due to needing to go through a third party to scrape eBay and as a result getting purchase results can take a while.
+
+### Prior Work
+- [First Iteration Figma Mockup](https://www.figma.com/proto/LCviy8TuxBVq5s4NyyT42r/LEvel-4-Part-6-Prototype?node-id=2-9&p=f&t=sNdPTx6cy81cT1IS-1&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A9)
+- [Second Iteration Figma Mockup](https://www.figma.com/design/JsrGG0Rd2pEv7UIJjapmBi/LEvel-4-Updated-Prototype?m=auto&t=EEBaXXNXgl8Qu3J3-6)
 
 
