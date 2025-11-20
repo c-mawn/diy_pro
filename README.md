@@ -5,7 +5,7 @@
 
 # Running The Extension:
 - Download this repo to your local device
-- Open your chrome extensions tab (chrome://extensions)[chrome://extensions] (you might need to type this into a tab yourself, as chrome:// is usually not linkable)
+- Open your chrome extensions tab [chrome://extensions](chrome://extensions) (you might need to type this into a tab yourself, as chrome:// is usually not linkable)
 - Turn on developer mode
 - Click 'load unpacked'
 - Select the this downloaded directory to load
@@ -20,14 +20,12 @@
 
 # Tasks
 - **Simple**: Image search. Use the DIY Pro extension to screenshot an image, search, and view closest matches.
-- **Medium**: View purchasing options. After selecting the closest match, view purchasing and filter options from different online retailers and secondhand sites.
-Medium: Learn more. View page of gathered resources from around the web. Click a tutorial to be taken to that webpage.
+- **Medium**: View purchasing options. After selecting the closest match, a list of tool purchase options will pop up with links too eBay pages. A list of expert repairers with skill sets around the tool also pops up with links to their profiles.
 - **Complex**: Self Register themselves to be expert repairers. This means when people search for a tool, if someone registered themselves as an expert repairer, then people can see that they are someone that they can reach out for help
-Prototype Limitations 
 
 # Limitations
 ## Wizard-of-Oz & Hardcoded Limitations
-Currently our prototype has Wizard-of-Oz search and filter features, as well as image search capabilities. This is mainly because figma has certain limitations that we felt we could preset without compromising the quality of the prototype. Furthermore the complex task is also limited as we did not have enough time to make it fully functional as part of our prototype, although there is enough to convey the overall idea. Search results would also be hard-coded as we could not actively scrap the internet via Figma.
+Currently our prototype has the image search hardcoded. There is no AI analyzing the image and the image search results are fixed two five hard coded tools. The users in our database are also hardcoded. They are not real users and are randomly generated. Our tool tags for the users are also hardcoded too. Aside from those two, everything has been programmed to be functional. Our purchase tools page uses a script to scrape eBay for tools and our signup for users registers new users to our database. 
 
 ## Other Limitations
 Some limitations are that the current second iteration is still in progress and has some limited functionality due to the updated changes from the feedback. Our database for our complex task is also hard-coded/ignored as scaling questions are not addressed in the medium fidelity prototype.
