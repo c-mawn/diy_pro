@@ -1,0 +1,115 @@
+/* ==============================
+   Root Colors & Fonts
+============================== */
+:root {
+  --blue: #007BFF;
+  --dark-blue: #0056b3;
+  --light-blue: #cce5ff;
+  --text-dark: #333;
+  --text-medium: #555;
+  --background-card: #ffffff;
+  --border-radius: 12px;
+  --box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 20px;
+  background: #f5f7fa;
+  color: var(--text-dark);
+}
+
+h1, h2 {
+  color: var(--blue);
+  margin-bottom: 10px;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--dark-blue);
+  text-decoration: underline;
+}
+
+/* ==============================
+   Breadcrumbs
+============================== */
+.breadcrumbs {
+  font-size: 0.9em;
+  margin-bottom: 15px;
+  color: var(--text-medium);
+}
+
+.breadcrumbs a {
+  color: var(--blue);
+}
+
+.breadcrumbs span {
+  color: var(--text-dark);
+}
+
+/* ==============================
+   Cards
+============================== */
+.card {
+  background: var(--background-card);
+  border: 2px solid var(--light-blue);
+  border-radius: var(--border-radius);
+  padding: 20px;
+  box-shadow: var(--box-shadow);
+  margin-bottom: 20px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* ==============================
+   Buttons
+============================== */
+.btn {
+  background-color: var(--blue);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.btn:hover {
+  background-color: var(--dark-blue);
+}
+
+/* ==============================
+   Responsive Layout
+============================== */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.card-grid .card {
+  flex: 1 1 calc(33% - 20px);
+}
+
+@media (max-width: 900px) {
+  .card-grid .card {
+    flex: 1 1 calc(50% - 15px);
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid .card {
+    flex: 1 1 100%;
+  }
+}
