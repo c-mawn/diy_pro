@@ -90,6 +90,59 @@ a:hover {
 }
 
 /* ==============================
+   Hero Section
+============================== */
+.hero {
+  text-align: center;
+  padding: 80px 20px;
+  background: #e9f2ff; /* soft blue tint to match theme */
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  margin-bottom: 40px;
+}
+
+.hero-logo {
+  width: 160px;
+  margin-bottom: 20px;
+}
+
+.hero-title {
+  font-size: 2.8rem;
+  margin: 10px 0 15px;
+  color: var(--blue);
+}
+
+.hero-tagline {
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 10px;
+  color: var(--text-medium);
+}
+
+.hero-description {
+  font-size: 1rem;
+  max-width: 650px;
+  margin: 0 auto 25px;
+  color: var(--text-dark);
+}
+
+.cta-btn {
+  display: inline-block;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 8px;
+  background: var(--blue);
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.cta-btn:hover {
+  background-color: var(--dark-blue);
+}
+
+
+/* ==============================
    Responsive Layout
 ============================== */
 .card-grid {

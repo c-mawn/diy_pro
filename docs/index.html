@@ -1,66 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Documentation</title>
-  <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIY Pro</title>
+    <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <nav class="breadcrumbs">
-    <a href="index.html">Home</a> / Project Documentation
-  </nav>
 
-  <header>
-    <h1>Welcome to Our Project</h1>
-    <p>This site documents our project journey, artifacts, mission, and detailed phases (levels).</p>
-  </header>
+    <!-- HERO SECTION -->
+    <header class="hero">
+        <img src="images/logo.png" alt="Product Logo" class="hero-logo">
 
-  <section class="card-grid">
+        <h1 class="hero-title">DIY Pro</h1>
 
-    <div class="card">
-      <h2>Artifact</h2>
-      <p>See the main output and deliverables from our project.</p>
-      <a href="artifact.html" class="btn">View Artifact</a>
-    </div>
+        <p class="hero-tagline">
+            A browser extension and website that identifies tools from repair videos 
+            and connects beginners with experienced repairers.
+        </p>
 
-    <div class="card">
-      <h2>Mission</h2>
-      <p>Learn about our project's purpose and goals.</p>
-      <a href="mission.html" class="btn">Our Mission</a>
-    </div>
+        <p class="hero-description">
+            Designed to reduce the barrier of entry into device repair by helping users 
+            identify niche tools, find affordable options, and reach out to experts who 
+            are eager to teach.
+        </p>
 
-    <div class="card">
-      <h2>About</h2>
-      <p>Meet our team and learn about our background.</p>
-      <a href="about.html" class="btn">About Us</a>
-    </div>
+        <a href="#sections" class="cta-btn">Explore the Project ↓</a>
+    </header>
 
-    <div class="card">
-      <h2>Level 3</h2>
-      <p>Phase 3 of our project, including progress and insights.</p>
-      <a href="level3.html" class="btn">View Level 3</a>
-    </div>
 
-    <div class="card">
-      <h2>Level 4</h2>
-      <p>Phase 4 of our project, including progress and insights.</p>
-      <a href="level4.html" class="btn">View Level 4</a>
-    </div>
+    <!-- CARD GRID SECTION -->
+    <section id="sections">
+        <div class="card-grid">
 
-    <div class="card">
-      <h2>Level 5</h2>
-      <p>Phase 5 of our project, including progress and insights.</p>
-      <a href="level5.html" class="btn">View Level 5</a>
-    </div>
+            <!-- Mission -->
+            <div class="card">
+                <h2>Mission</h2>
+                <p>
+                    Learn about the purpose of our product and the insights from our research 
+                    that shaped its direction.
+                </p>
+                <a href="mission.html">Read More →</a>
+            </div>
 
-    <div class="card">
-      <h2>Level 6</h2>
-      <p>Phase 6 of our project, including progress and insights.</p>
-      <a href="level6.html" class="btn">View Level 6</a>
-    </div>
+            <!-- Process -->
+            <div class="card">
+                <h2>Process</h2>
+                <p>
+                    Explore our design process across engagements, low-fi, mid-fi, and high-fi 
+                    prototyping.
+                </p>
+                <a href="process.html">View Process →</a>
+            </div>
 
-  </section>
+            <!-- Artifacts -->
+            <div class="card">
+                <h2>Artifacts</h2>
+                <p>
+                    Access our prototypes, documentation, and final deliverables from the 
+                    semester.
+                </p>
+                <a href="artifacts.html">View Artifacts →</a>
+            </div>
+
+            <!-- About Us -->
+            <div class="card">
+                <h2>About Us</h2>
+                <p>
+                    Meet the team behind ToolSnap and learn about our roles and backgrounds.
+                </p>
+                <a href="about.html">Meet the Team →</a>
+            </div>
+
+        </div>
+    </section>
 
 </body>
 </html>
