@@ -94,53 +94,55 @@ a:hover {
 ============================== */
 .hero {
   text-align: center;
-  padding: 140px 20px;       /* more breathing room */
+  padding: 160px 24px;       /* more top/bottom */
   max-width: 900px;
-  margin: 0 auto 60px;
+  margin: 0 auto 80px;       /* more breathing room below */
   background: #e9f2ff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
 
-/* Bigger Logo */
+/* Increased logo size + spacing */
 .hero-logo {
-  width: 220px;              /* increased from 160px */
-  margin-bottom: 30px;
+  width: 240px;
+  margin-bottom: 40px;       /* more space under logo */
 }
 
+/* Title spacing */
 .hero-title {
-  font-size: 3.2rem;         /* much bigger */
-  font-weight: 700;          /* bold for hierarchy */
-  margin-bottom: 20px;
+  font-size: 3.2rem;
+  font-weight: 700;
+  margin-bottom: 28px;       /* more space before tagline */
   color: var(--blue);
 }
 
+/* Tagline spacing + readability */
 .hero-tagline {
-  font-size: 1.5rem;         /* bigger + readable */
+  font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 20px;
-  line-height: 1.6;
-  color: var(--text-medium);
+  margin-bottom: 28px;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.6;
+  color: var(--text-medium);
 }
 
+/* Description spacing */
 .hero-description {
   font-size: 1.2rem;
   max-width: 750px;
-  margin: 0 auto 40px;
   line-height: 1.8;
+  margin: 0 auto 50px;        /* more breathing room above button */
   color: var(--text-dark);
 }
 
-/* CTA Button */
+/* Bigger CTA button */
 .cta-btn {
-  display: inline-block;
-  padding: 16px 32px;
-  font-size: 1.1rem;
-  border-radius: 10px;
+  padding: 18px 36px;
+  font-size: 1.15rem;
   font-weight: 600;
+  border-radius: 10px;
 }
 
 
