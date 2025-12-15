@@ -37,23 +37,6 @@ a:hover {
 }
 
 /* ==============================
-   Breadcrumbs
-============================== */
-.breadcrumbs {
-  font-size: 0.9em;
-  margin-bottom: 15px;
-  color: var(--text-medium);
-}
-
-.breadcrumbs a {
-  color: var(--blue);
-}
-
-.breadcrumbs span {
-  color: var(--text-dark);
-}
-
-/* ==============================
    Cards
 ============================== */
 .card {
@@ -143,6 +126,53 @@ a:hover {
   font-size: 1.15rem;
   font-weight: 600;
   border-radius: 10px;
+}
+
+/* ==============================
+   Level Pages (Long-form Content)
+============================== */
+.level-page {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 40px 40px;
+  background: #e9f2ff;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  text-align: left; 
+}
+
+.level-page h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+.level-page h2 {
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-bottom: 40px;
+  color: var(--text-medium);
+}
+
+.level-intro {
+  font-size: 1.3rem;
+  line-height: 1.8;
+  margin-bottom: 40px;
+}
+
+.level-page section {
+  margin-bottom: 60px;
+}
+
+.level-page h3 {
+  font-size: 1.4rem;
+  margin-bottom: 16px;
+  color: var(--blue);
+}
+
+.level-page p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 16px;
 }
 
 
