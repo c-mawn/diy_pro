@@ -13,14 +13,15 @@
   --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* ==============================
+   Base Styles
+============================== */
 body {
   font-family: var(--font-sans);
   margin: 0;
-  padding: 20px;
   background: #f5f7fa;
   color: var(--text-dark);
 }
-
 h1, h2 {
   color: var(--blue);
   margin-bottom: 10px;
@@ -72,34 +73,101 @@ a:hover {
   background-color: var(--dark-blue);
 }
 
+/* Hero CTA Link (Explore Project) */
+.cta-btn {
+  display: inline-block;
+  color: var(--blue);      /* blue text */
+  text-decoration: none;   /* no underline */
+  font-weight: 600;
+  font-size: 1.15rem;
+  transition: color 0.2s;
+}
+
+.cta-btn:hover {
+  color: var(--dark-blue); /* darker blue on hover */
+  text-decoration: underline; /* optional underline on hover */
+}
+
+
+/* ==============================
+   Navbar
+============================== */
+.top-nav {
+  position: sticky;
+  top: 0;
+  background: #f0f6ff;        /* slightly darker than before */
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid #cbd6e2; /* subtle border */
+  z-index: 10;
+  height: 60px;                 /* fixed height ensures proper alignment */
+  display: flex;
+  align-items: center;          /* vertically center content */
+}
+
+
+.nav-inner {
+  width: 100%;          /* full width */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 100px;      /* small padding left/right */
+  height: 100%;
+  margin: 0;            /* remove auto centering */
+}
+
+.nav-brand {
+  display: flex;           /* make logo + text a flex row */
+  align-items: center;     /* vertically center the text with the logo */
+  gap: 8px;                /* optional spacing between logo and text */
+  font-weight: 700;
+  font-size: 1.2rem;
+  color: var(--blue);
+}
+
+.nav-logo {
+    height: 40px;       /* keeps it fitting nicely in navbar */
+    width: auto;        /* preserves aspect ratio */
+    border-radius: 4px; /* rounds the corners slightly */
+}
+
+.nav-links a {
+  margin-left: 24px;
+  font-weight: 500;
+  color: var(--text-medium);
+  line-height: 60px;            /* vertically center text */
+}
+
+.nav-links a:hover {
+  color: var(--blue);
+}
+
+
 /* ==============================
    Hero Section
 ============================== */
 .hero {
   text-align: center;
-  padding: 160px 24px;       /* more top/bottom */
+  padding: 50px 24px;
+  margin: 50px auto;
   max-width: 900px;
-  margin: 0 auto 80px;       /* more breathing room below */
   background: #e9f2ff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
 
-/* Increased logo size + spacing */
 .hero-logo {
-  width: 240px;
-  margin-bottom: 40px;       /* more space under logo */
+  width: 400px;
+  height: auto;
+  border-radius: 16px;
 }
 
-/* Title spacing */
 .hero-title {
   font-size: 3.2rem;
   font-weight: 700;
-  margin-bottom: 28px;       /* more space before tagline */
+  margin-bottom: 28px;
   color: var(--blue);
 }
 
-/* Tagline spacing + readability */
 .hero-tagline {
   font-size: 1.5rem;
   font-weight: 500;
@@ -111,21 +179,12 @@ a:hover {
   color: var(--text-medium);
 }
 
-/* Description spacing */
 .hero-description {
   font-size: 1.2rem;
   max-width: 750px;
   line-height: 1.8;
-  margin: 0 auto 50px;        /* more breathing room above button */
+  margin: 0 auto 50px;
   color: var(--text-dark);
-}
-
-/* Bigger CTA button */
-.cta-btn {
-  padding: 18px 36px;
-  font-size: 1.15rem;
-  font-weight: 600;
-  border-radius: 10px;
 }
 
 /* ==============================
@@ -134,7 +193,7 @@ a:hover {
 .level-page {
   max-width: 900px;
   margin: 50px auto;
-  padding: 40px 40px;
+  padding: 40px;
   background: #e9f2ff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -175,7 +234,13 @@ a:hover {
   margin-bottom: 16px;
 }
 
-
+.level-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
+}
 
 /* ==============================
    Responsive Layout
@@ -184,7 +249,9 @@ a:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  padding: 20px; /* adds space outside cards inside the container */
 }
+
 
 .card-grid .card {
   flex: 1 1 calc(33% - 20px);
