@@ -147,8 +147,8 @@ a:hover {
 ============================== */
 .hero {
   text-align: center;
-  padding: 50px 24px; /* reduced top padding to 50px */
-  margin: 50px auto;   /* same as level-page */
+  padding: 50px 24px;
+  margin: 50px auto;
   max-width: 900px;
   background: #e9f2ff;
   border-radius: var(--border-radius);
@@ -156,7 +156,7 @@ a:hover {
 }
 
 .hero-logo {
-  width: 360px;
+  width: 400px;
   height: auto;
   border-radius: 16px;
 }
