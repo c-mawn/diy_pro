@@ -147,9 +147,9 @@ a:hover {
 ============================== */
 .hero {
   text-align: center;
-  padding: 100px 24px;
+  padding: 50px 24px; /* reduced top padding to 50px */
+  margin: 50px auto;   /* same as level-page */
   max-width: 900px;
-  margin: 0 auto 80px;
   background: #e9f2ff;
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
@@ -232,6 +232,14 @@ a:hover {
   font-size: 1.1rem;
   line-height: 1.8;
   margin-bottom: 16px;
+}
+
+.level-page img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 20px auto;
+  border-radius: 12px;
 }
 
 /* ==============================
