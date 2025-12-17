@@ -268,11 +268,12 @@ a:hover {
 }
 
 .level-page img {
-  max-width: 100%;
-  height: auto;
   display: block;
   margin: 20px auto;
   border-radius: 12px;
+  min-width: 400px;   /* minimum width */
+  max-width: 100%;    /* don't exceed container width */
+  height: auto;
 }
 
 .card-grid {
