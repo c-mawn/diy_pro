@@ -1,10 +1,11 @@
-/* ==============================
-   Root Colors & Fonts
-============================== */
 :root {
   --blue: #007BFF;
   --dark-blue: #0056b3;
   --light-blue: #cce5ff;
+  --nav-bg: #f0f6ff;
+  --page-bg: #f5f7fa;
+  --section-bg: #e9f2ff;
+  --border-light: #cbd6e2;
   --text-dark: #333;
   --text-medium: #555;
   --background-card: #ffffff;
@@ -13,15 +14,13 @@
   --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* ==============================
-   Base Styles
-============================== */
 body {
   font-family: var(--font-sans);
   margin: 0;
-  background: #f5f7fa;
+  background: var(--page-bg);
   color: var(--text-dark);
 }
+
 h1, h2 {
   color: var(--blue);
   margin-bottom: 10px;
@@ -37,9 +36,6 @@ a:hover {
   text-decoration: underline;
 }
 
-/* ==============================
-   Cards
-============================== */
 .card {
   background: var(--background-card);
   border: 2px solid var(--light-blue);
@@ -55,9 +51,6 @@ a:hover {
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
-/* ==============================
-   Buttons
-============================== */
 .btn {
   background-color: var(--blue);
   color: white;
@@ -73,84 +66,74 @@ a:hover {
   background-color: var(--dark-blue);
 }
 
-/* Hero CTA Link (Explore Project) */
 .cta-btn {
   display: inline-block;
-  color: var(--blue);      /* blue text */
-  text-decoration: none;   /* no underline */
+  color: var(--blue);
+  text-decoration: none;
   font-weight: 600;
   font-size: 1.15rem;
   transition: color 0.2s;
 }
 
 .cta-btn:hover {
-  color: var(--dark-blue); /* darker blue on hover */
-  text-decoration: underline; /* optional underline on hover */
+  color: var(--dark-blue);
+  text-decoration: underline;
 }
 
-
-/* ==============================
-   Navbar
-============================== */
 .top-nav {
   position: sticky;
   top: 0;
-  background: #f0f6ff;        /* slightly darker than before */
+  background: var(--nav-bg);
   backdrop-filter: blur(6px);
-  border-bottom: 1px solid #cbd6e2; /* subtle border */
+  border-bottom: 1px solid var(--border-light);
   z-index: 10;
-  height: 60px;                 /* fixed height ensures proper alignment */
+  height: 60px;
   display: flex;
-  align-items: center;          /* vertically center content */
+  align-items: center;
 }
 
-
 .nav-inner {
-  width: 100%;          /* full width */
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 100px;      /* small padding left/right */
+  padding: 0 100px;
   height: 100%;
-  margin: 0;            /* remove auto centering */
+  margin: 0;
 }
 
 .nav-brand {
-  display: flex;           /* make logo + text a flex row */
-  align-items: center;     /* vertically center the text with the logo */
-  gap: 8px;                /* optional spacing between logo and text */
+  display: flex;
+  align-items: center;
+  gap: 8px;
   font-weight: 700;
   font-size: 1.2rem;
   color: var(--blue);
 }
 
 .nav-logo {
-    height: 40px;       /* keeps it fitting nicely in navbar */
-    width: auto;        /* preserves aspect ratio */
-    border-radius: 4px; /* rounds the corners slightly */
+  height: 40px;
+  width: auto;
+  border-radius: 4px;
 }
 
 .nav-links a {
   margin-left: 24px;
   font-weight: 500;
   color: var(--text-medium);
-  line-height: 60px;            /* vertically center text */
+  line-height: 60px;
 }
 
 .nav-links a:hover {
   color: var(--blue);
 }
 
-
-/* ==============================
-   Hero Section
-============================== */
 .hero {
   text-align: center;
   padding: 50px 24px;
   margin: 50px auto;
   max-width: 900px;
-  background: #e9f2ff;
+  background: var(--section-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
 }
@@ -187,17 +170,14 @@ a:hover {
   color: var(--text-dark);
 }
 
-/* ==============================
-   Level Pages (Long-form Content)
-============================== */
 .level-page {
   max-width: 900px;
   margin: 50px auto;
   padding: 40px;
-  background: #e9f2ff;
+  background: var(--section-bg);
   border-radius: var(--border-radius);
   box-shadow: var(--box-shadow);
-  text-align: left; 
+  text-align: left;
 }
 
 .level-page h1 {
@@ -242,16 +222,12 @@ a:hover {
   border-radius: 12px;
 }
 
-/* ==============================
-   Responsive Layout
-============================== */
 .card-grid {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding: 20px; /* adds space outside cards inside the container */
+  padding: 20px;
 }
-
 
 .card-grid .card {
   flex: 1 1 calc(33% - 20px);
