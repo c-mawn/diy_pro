@@ -276,6 +276,18 @@ a:hover {
   height: auto;
 }
 
+.level-page ul {
+  margin: 0 0 16px 1.2em;   /* same bottom spacing as paragraphs */
+  padding: 0;
+}
+
+.level-page li {
+  font-size: 1.1rem;       /* match paragraph size */
+  line-height: 1.8;        /* match paragraph line height */
+  color: var(--text-dark);
+  margin-bottom: 8px;      /* subtle spacing between bullets */
+}
+
 .card-grid {
   display: flex;
   flex-wrap: wrap;
