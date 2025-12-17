@@ -149,6 +149,14 @@ a:hover {
   color: var(--blue);
 }
 
+.anchor-offset {
+    display: block;
+    position: relative;
+    top: -80px;
+    visibility: hidden;
+    height: 0;
+}
+
 .hero {
   text-align: center;
   padding: 50px 24px;
